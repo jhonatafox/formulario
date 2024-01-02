@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteio para Promoção</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f8ff; /* Azul claro */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    button {
+      background-color: #3498db; /* Azul escuro */
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9; /* Azul médio */
+    }
+
+    .success {
+      color: #2ecc71; /* Verde */
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="color: #3498db;">Sorteio para Promoção</h2>
+
+<button onclick="realizarSorteio()">Realizar Sorteio</button>
+<span id="numeroSorteado" class="success"></span>
+
+<script>
+  // Lógica de sorteio...
+  function realizarSorteio() {
+    // Verificar se existem pelo menos dois números de nota únicos
+    if (numerosNotasInseridos.length < 2) {
+      alert('É necessário cadastrar pelo menos dois números de nota únicos para realizar o sorteio.');
+      return;
+    }
+
+    // Sortear um número aleatório
+    const numeroSorteadoIndex = Math.floor(Math.random() * numerosNotasInseridos.length);
+    const numeroSorteado = numerosNotasInseridos[numeroSorteadoIndex];
+
+    // Exibir o número sorteado
+    document.getElementById('numeroSorteado').innerHTML = `Número Sorteado: ${numeroSorteado}`;
+  }
+</script>
+
+</body>
+</html>

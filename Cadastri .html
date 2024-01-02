@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro para Promoção</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f8ff; /* Azul claro */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #3498db; /* Azul escuro */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #fff; /* Texto branco */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #2980b9; /* Azul médio */
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #1a5276; /* Tom mais escuro de azul */
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="color: #3498db;">Cadastro para Promoção</h2>
+
+<form id="promoForm" onsubmit="return validarFormulario()">
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" name="nome" required>
+
+  <label for="telefone">Telefone:</label>
+  <input type="tel" id="telefone" name="telefone" required pattern="[0-9]{9}" title="Informe um número de telefone válido (apenas 9 dígitos numéricos)">
+
+  <label for="numeroNota">Número da Nota:</label>
+  <input type="number" id="numeroNota" name="numeroNota" required>
+  <span id="erroNumeroNota" class="error"></span>
+
+  <input type="submit" value="Enviar">
+</form>
+
+<script>
+  // Lógica de validação...
+  var numerosNotasCadastrados = [];
+
+  function validarFormulario() {
+    // Obter o número da nota inserido pelo usuário
+    const numeroNota = document.getElementById('numeroNota').value;
+
+    // Verificar se o número da nota já foi cadastrado
+    if (numerosNotasCadastrados.includes(numeroNota)) {
+      document.getElementById('erroNumeroNota').innerHTML = 'Número da nota já cadastrado. Insira um número único.';
+      return false; // Impede o envio do formulário
+    }
+
+    // Se o número da nota for único, limpar o erro e adicionar à lista
+    document.getElementById('erroNumeroNota').innerHTML = '';
+    numerosNotasCadastrados.push(numeroNota);
+
+    // Limpar o campo de número da nota após a submissão (opcional)
+    document.getElementById('numeroNota').value = '';
+
+    // Exibir mensagem de sucesso
+    alert('Cadastro realizado com sucesso!');
+
+    // Restante da lógica de validação, se necessário
+
+    return false; // Alterado para false apenas para evitar o envio real do formulário para este exemplo
+  }
+</script>
+
+</body>
+</html>
